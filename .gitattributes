@@ -1,0 +1,2 @@
+*.pth filter=lfs diff=lfs merge=lfs -text
+pre-training/mae_hivit_base_1600ep.pth filter=lfs diff=lfs merge=lfs -text
