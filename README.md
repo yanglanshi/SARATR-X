@@ -80,7 +80,7 @@ pip install -r requirements_pretrain.txt
 
 ### Start Pre-training with SAR images
 
-We consider that constructing self-supervised signals for SAR images, which suffer from many disturbances in imaging quality, requires a combination of noise suppression and feature compression.
+We consider that constructing self-supervised signals for SAR images, which suffer from many disturbances in imaging quality, requires a combination of noise suppression and feature compression. And the initial weight is from [mae_hivit_base_1600ep.pth](https://github.com/zhangxiaosong18/hivit).
 
 ```bash
 python -m torch.distributed.launch --nproc_per_node 8 --master_port 12345 --use_env main_pretrain.py
