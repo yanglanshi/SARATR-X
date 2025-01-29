@@ -229,12 +229,15 @@ chmod -R +x tools
 - 如有任何问题或者需要其他数据、代码和权重文件，请通过 lwj2150508321@sina.com 联系我们。
 - 如果您觉得我们的工作有价值，请在 GitHub 上给我们 🌟 并按以下 BibTex 格式引用我们的论文：
 ```
-@article{li2024saratr,
-  title={SARATR-X: Towards Building A Foundation Model for SAR Target Recognition},
+@article{LiSARATRX25,
   author={Li, Weijie and Yang, Wei and Hou, Yuenan and Liu, Li and Liu, Yongxiang and Li, Xiang},
-  journal={arXiv preprint},
-  url={https://arxiv.org/abs/2405.09365},
-  year={2024}
+  journal={IEEE Transactions on Image Processing}, 
+  title={SARATR-X: Towards Building A Foundation Model for SAR Target Recognition}, 
+  year={2025},
+  volume={},
+  number={},
+  pages={1-16},
+  doi={10.1109/TIP.2025.3531988}
 }
 
 @article{li2024predicting,
