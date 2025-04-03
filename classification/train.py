@@ -19,13 +19,11 @@ import datasets.MSTAR_EOC2C
 import datasets.MSTAR_EOC2V
 import datasets.SAR_ACD
 import datasets.New_FUSAR
-import datasets.SAMPLE
 import datasets.sun397
 import datasets.caltech101
 import datasets.ucf101
 import datasets.imagenet
 import datasets.MyDataset
-import datasets.FUSARShip
 
 
 import datasets.imagenet_sketch
