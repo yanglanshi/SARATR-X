@@ -20,7 +20,7 @@
 
 This is the official repository for the paper “SARATR-X: Towards Building A Foundation Model for SAR Target Recognition”.  If you find our work is useful, please give us a star 🌟 in GitHub and cite our paper in the BibTex format at the end.
 
-这里是论文 “SARATR-X: Towards Building A Foundation Model for SAR Target Recognition (SARATR-X：迈向SAR目标识别基础模型) ”的代码库。如果您觉得我们的工作有价值，请在 GitHub 上给我们个星星 🌟 并按以下 BibTex 格式引用我们的论文：
+这里是论文 “SARATR-X: Towards Building A Foundation Model for SAR Target Recognition (SARATR-X：迈向SAR目标识别基础模型) ”的代码库。如果您觉得我们的工作有价值，请在 GitHub 上给我们个星星 🌟 并按页面最后的 BibTex 格式引用我们的论文。
 
 You can contact us to get these datasets and weights by email.
 
