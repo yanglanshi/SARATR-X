@@ -223,10 +223,11 @@ chmod -R +x tools
 ## Statement
 
 
+- This project is released under the [CC BY-NC 4.0](LICENSE).
+- 本项目采用[CC BY-NC 4.0](LICENSE)协议发布。
 - If you have any questions or need additional data, code and weight files, please contact us at lwj2150508321@sina.com. 
-- If you find our work is useful, please give us 🌟 in GitHub and cite our paper in the following BibTex format:
-
 - 如有任何问题或者需要其他数据、代码和权重文件，请通过 lwj2150508321@sina.com 联系我们。
+- If you find our work is useful, please give us 🌟 in GitHub and cite our paper in the following BibTex format:
 - 如果您觉得我们的工作有价值，请在 GitHub 上给我们 🌟 并按以下 BibTex 格式引用我们的论文：
 ```
 @article{LiSARATRX25,
