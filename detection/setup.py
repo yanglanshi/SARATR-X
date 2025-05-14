@@ -13,12 +13,6 @@ from torch.utils.cpp_extension import (BuildExtension, CppExtension,
                                        CUDAExtension)
 
 
-def readme():
-    with open('README.md', encoding='utf-8') as f:
-        content = f.read()
-    return content
-
-
 version_file = 'mmdet/version.py'
 
 
@@ -189,7 +183,6 @@ if __name__ == '__main__':
         name='mmdet',
         version=get_version(),
         description='OpenMMLab Detection Toolbox and Benchmark',
-        long_description=readme(),
         long_description_content_type='text/markdown',
         author='MMDetection Contributors',
         author_email='openmmlab@gmail.com',
