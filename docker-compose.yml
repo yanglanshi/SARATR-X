@@ -1,0 +1,107 @@
+# SARATR-X Docker Compose 配置文件
+# 定义多服务容器环境：主容器、TensorBoard、Jupyter Notebook
+
+version: '3.8'
+
+services:
+  # 主要的SARATR-X容器服务
+  saratrx:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: saratrx:latest
+    container_name: saratrx_main
+    volumes:
+      # 挂载数据目录
+      - ./data:/workspace/data
+      # 挂载输出目录
+      - ./output:/workspace/output
+      # 挂载检查点目录
+      - ./checkpoints:/workspace/checkpoints
+      # 挂载检测任务工作目录
+      - ./work_dirs:/workspace/work_dirs
+      # 挂载日志目录
+      - ./logs:/workspace/logs
+    environment:
+      # 指定使用的GPU设备
+      - CUDA_VISIBLE_DEVICES=0
+      # 设置Python模块搜索路径
+      - PYTHONPATH=/workspace:/workspace/detection:/workspace/pre-training:/workspace/classification
+      # 数据路径环境变量
+      - DATA_PATH=/workspace/data
+      # 输出路径环境变量
+      - OUTPUT_PATH=/workspace/output
+      # 检查点路径环境变量
+      - CHECKPOINT_PATH=/workspace/checkpoints
+    ports:
+      # TensorBoard端口
+      - "6006:6006"
+      # Jupyter notebook端口
+      - "8888:8888"
+    stdin_open: true
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            # GPU资源预留配置
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - saratrx_network
+
+  # TensorBoard可视化服务
+  tensorboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: saratrx:latest
+    container_name: saratrx_tensorboard
+    command: ["tensorboard", "--logdir=/workspace/logs", "--host=0.0.0.0", "--port=6006"]
+    volumes:
+      # 挂载日志目录用于TensorBoard可视化
+      - ./logs:/workspace/logs
+    ports:
+      # TensorBoard独立端口
+      - "6007:6006"
+    depends_on:
+      - saratrx
+    networks:
+      - saratrx_network
+
+  # Jupyter Notebook交互式开发服务
+  jupyter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: saratrx:latest
+    container_name: saratrx_jupyter
+    command: ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
+    volumes:
+      # 挂载整个项目目录
+      - ./:/workspace
+      # 挂载数据目录
+      - ./data:/workspace/data
+      # 挂载输出目录
+      - ./output:/workspace/output
+    ports:
+      # Jupyter独立端口
+      - "8889:8888"
+    depends_on:
+      - saratrx
+    networks:
+      - saratrx_network
+
+# 网络配置
+networks:
+  saratrx_network:
+    driver: bridge
+
+# 卷配置（用于数据持久化）
+volumes:
+  data:
+  output:
+  checkpoints:
+  work_dirs:
+  logs:
