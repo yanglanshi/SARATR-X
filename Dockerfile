@@ -6,7 +6,7 @@ ARG CUDA="11.1"
 ARG CUDNN="8"
 
 # 使用PyTorch官方镜像作为基础镜像
-FROM pytorch/pytorch:${PYTORCH}-cuda${CUDA}-cudnn${CUDNN}-devel
+FROM pytorch/pytorch:1.8.1-cuda11.1-cudnn8-devel
 
 # 设置CUDA编译相关环境变量
 ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0 7.5 8.0 8.6+PTX"
@@ -15,6 +15,9 @@ ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 ENV FORCE_CUDA="1"
 
 # 安装系统依赖包
+RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
+    sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub
 RUN apt-get update && apt-get install -y \
     git \
     build-essential \

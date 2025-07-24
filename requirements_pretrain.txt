@@ -3,7 +3,7 @@ einops==0.8.0
 grpcio==1.68.1
 importlib_metadata==8.5.0
 Markdown==3.7
-MarkupSafe==3.0.2
+MarkupSafe==2.1.5
 numpy==1.23.5
 opencv-python==4.10.0.84
 packaging==24.2
